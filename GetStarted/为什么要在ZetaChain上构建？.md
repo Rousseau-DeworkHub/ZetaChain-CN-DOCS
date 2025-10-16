@@ -7,7 +7,7 @@ ZetaChain 是一个助力开发者打造通用应用的平台，这些应用能�
 
 ## 1. 跨链协调（Chain Orchestration）
 
-![ZetaChain 跨链协调示意图](https://www.zetachain.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Forchestration.838d6778.png&w=1920&q=75)
+<img src="../images/GetStarted/why-orchestration.webp">
 
 ZetaChain 的突出功能之一，是能通过单个智能合约协调多个区块链间的复杂交易。基于 ZetaChain 构建的通用应用，可管理来自不同区块链的代币转入和合约调用，并向已连接的网络发起转出交易——所有操作均在统一框架内完成。
 
@@ -24,7 +24,7 @@ ZetaChain 的突出功能之一，是能通过单个智能合约协调多个区�
 
 ## 3. 原生代币转移（Transfer Native Tokens）
 
-![ZetaChain 免 Gas 费执行示意图](https://www.zetachain.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgasless.67c39999.png&w=1920&q=75)
+<img src="../images/GetStarted/why-custody.webp">
 
 基于 ZetaChain 的通用应用，核心能力之一是支持在所有已连接的链间使用原生代币转移价值。这意味着用户可直接使用各区块链的原生资产进行交易，而非其封装版（wrapped）或合成版（synthetic）代币。
 
