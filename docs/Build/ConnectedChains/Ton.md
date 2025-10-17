@@ -1,6 +1,6 @@
 | 标题 | 描述                                              |
 | :--- | :------------------------------------------------ |
-| TON  | Make calls to universal apps and deposit from TON |
+| TON  | 从 TON 调用通用应用并进行存入 |
 
 若要从 TON 与通用应用交互，请使用 TON 网关（TON Gateway）。
 
