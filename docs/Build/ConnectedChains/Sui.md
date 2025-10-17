@@ -6,7 +6,7 @@
 
 要从 Sui 链与通用应用程序交互，请使用 Sui 网关。
 
-关于使用 Sui 网关的分步示例，请参阅 [Sui 教程](/)。
+对于使用 Sui 网关的分步示例，请参阅 [Sui 教程](https://www.zetachain.com/docs/developers/tutorials/sui/)。
 
 Sui 网关支持：
 
