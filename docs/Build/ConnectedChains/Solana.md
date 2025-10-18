@@ -1,8 +1,8 @@
+# Solana
+
 | 标题 | 描述 |
 | :- | :- |
-| Solana | 介绍如何通过 Solana Gateway 与通用应用交互、存入资产并处理回退。 |
-
-# Solana
+| Solana | 通过 Solana Gateway 与通用应用交互、存入资产并处理回退 |
 
 在 Solana 上与通用应用（Universal Apps）交互时，需要使用 **Solana Gateway**。  
 Solana Gateway 支持以下操作：

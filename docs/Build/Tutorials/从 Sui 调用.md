@@ -1,8 +1,8 @@
-# 从 Sui 调用 ZetaChain
+# 从 Sui 调用
 
 | 标题 | 描述 |
 | :- | :- |
-| 从 Sui 调用 ZetaChain | 在 Sui 中存入资产并调用通用应用 |
+| 从 Sui 调用 | 从 Sui 存入资产并调用通用应用 |
 
 ZetaChain 允许基于 Sui 的应用程序与部署在 ZetaChain 上的通用智能合约直接交互。使用 ZetaChain 的通用互操作性层，Sui 应用程序可以：
 
@@ -25,7 +25,7 @@ ZetaChain 允许基于 Sui 的应用程序与部署在 ZetaChain 上的通用智
 
 | 工具 | 用途 |
 | --- | --- |
-| [Sui CLI](https://docs.sui.io/references/cli) | 运行本地 Sui 验证器、管理地址和对象、部署合约 |
+| [Sui CLI](https://docs.sui.io/references/cli) | 运行本地 Sui 验证者、管理地址和对象、部署合约 |
 | [Foundry](https://getfoundry.sh/) | 使用 `cast` 为跨链调用编码 ABI 有效负载 |
 | [Node.js](https://nodejs.org/en) | 运行 ZetaChain CLI 和基于 JavaScript 的工具 |
 | [Yarn](https://yarnpkg.com/) | 安装和管理项目依赖 |
@@ -62,7 +62,7 @@ yarn zetachain localnet start --chains sui
 此命令将启动：
 
 - 一个本地 ZetaChain 实例
-- 一个本地 Sui 验证器
+- 一个本地 Sui 验证者
 - 在两个网络上预部署的网关 (gateway) 合约
 
 让这个终端保持打开状态。启动后，您将看到如下表格：
@@ -194,7 +194,7 @@ SUI_CONTRACT=$(sui client publish \
 sui client faucet
 ```
 
-这将向本地验证器发送 Faucet 请求，并为您的活动地址存入测试 SUI。
+这将向本地验证者发送 Faucet 请求，并为您的活动地址存入测试 SUI。
 
 ## 从 Sui 合约存入并调用
 

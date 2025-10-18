@@ -1,8 +1,8 @@
-|标题|描述|
-|:-|:-|
-| Bitcoin | 调用通用应用并从比特币存入 BTC |
-
 # Bitcoin
+
+| 标题 | 描述 |
+| :- | :- |
+| Bitcoin | 调用通用应用并从比特币存入 BTC |
 
 从 Bitcoin 调用 ZetaChain 上的通用合约（Universal Contract）是通过 **Bitcoin 网关（Bitcoin Gateway）** 实现的。  
 该网关是一个基于 **阈值签名方案（Threshold Signature Scheme，TSS）** 的地址，其私钥通过 **多方计算（MPC）** 分布在 ZetaChain 的验证者集合中。
@@ -39,7 +39,7 @@ Inscription 允许通过在 Bitcoin 交易中嵌入结构化元数据，实现 B
 - **Commit**：将载荷编码为 Taproot-inscribed 输出，提交但暂不公开数据。
 - **Reveal**：广播已提交的数据，包括在 ZetaChain 上执行合约的逻辑。
 
-**✉️ 封装格式（Witness Script）**
+### 封装格式（Witness Script）
 
 ```text
 OP_PUSHBYTES_32 <32-byte public key> OP_CHECKSIG
@@ -50,11 +50,11 @@ OP_IF
 OP_ENDIF
 ```
 
-**🧩 载荷格式**
+### 载荷格式
 
 Inscription 数据由一个 4 字节的 ZetaChain 头部和编码字段组成（ABI 或 Compact 编码）。
 
-**Header（头部）**
+#### Header（头部）
 
 | 字节索引 | 描述 |
 | -------- | ---- |
@@ -63,7 +63,7 @@ Inscription 数据由一个 4 字节的 ZetaChain 头部和编码字段组成（
 | 2 | 操作码（高 4 位）。例如：`0x20` 表示 Call = `0x02 << 4` |
 | 3 | 标志位掩码，指示设置了哪些字段。常见值：`0x07`（包含接收者 + 载荷 + 回退地址） |
 
-**编码格式说明**
+#### 编码格式说明
 
 | 格式 | 值 |
 | ---- | -- |
@@ -75,7 +75,7 @@ Compact 编码更节省空间，适合优化交易大小。
 当所有动态字段（payload 与回退地址）小于 255 字节时，使用 `CompactShort`；  
 当任一字段可能超过该阈值时，使用 `CompactLong`。
 
-**ABI 编码**
+#### ABI 编码
 
 对于包含结构化输入的调用，ZetaChain 使用 Ethereum 风格的 **ABI 编码**，以保持与 Solidity 合约完全兼容。  
 这允许传递复杂类型（如 address、bytes、uint256[] 等），并在客户端侧编码后嵌入 inscription 中。
@@ -91,7 +91,7 @@ Compact 编码更节省空间，适合优化交易大小。
 
 > 注意：ABI 编码数据必须排除 4 字节的函数选择器，仅包含参数值的打包部分。
 
-**Compact 编码**
+#### Compact 编码
 
 每个字段使用更紧凑的形式编码：
 
@@ -111,7 +111,7 @@ Compact 编码更节省空间，适合优化交易大小。
 | Payload | [长度:1 或 2] + 数据字节 |
 | Revert | [长度:1 或 2] + 地址字节 |
 
-**🔁 操作类型（OpCode）**
+#### 操作类型（OpCode）
 
 | 操作 | 代码 | 描述 |
 | ---- | ---- | ---- |
@@ -127,6 +127,7 @@ Compact 编码更节省空间，适合优化交易大小。
 - 适用于向 ZetaChain 上的外部账户（EOA）转账 BTC。
 
 **示例：**
+
 - [Commit 交易](https://mempool.space/signet/tx/eaaabfe041c0784d31a5bb8db3ff255b31ae5bd4a81f918a73e39ab3d4f3cd8c)
 - [Reveal 交易](https://mempool.space/signet/tx/b1934876ab53b211fc1e3168bd0b4e2df6a5d9f3bd1be6c77a88666a7c9e926e)
 - [跨链交易](https://zetachain-athens.blockpi.network/lcd/v1/public/zeta-chain/crosschain/inboundHashToCctxData/b1934876ab53b211fc1e3168bd0b4e2df6a5d9f3bd1be6c77a88666a7c9e926e)
@@ -140,6 +141,7 @@ Compact 编码更节省空间，适合优化交易大小。
 - 适合执行不涉及 BTC 转账的通用合约逻辑。
 
 **示例：**
+
 - [Commit 交易](https://mempool.space/signet/tx/6c92cb80f093176b865c1431770e43c9264074d797acabbfee244f96751aac61)
 - [Reveal 交易](https://mempool.space/signet/tx/cdb52721e9787c94cda196304d9f699cc89d661c9946bac32f7bdfcf17e08eaa)
 - [跨链交易](https://zetachain-athens.blockpi.network/lcd/v1/public/zeta-chain/crosschain/inboundHashToCctxData/cdb52721e9787c94cda196304d9f699cc89d661c9946bac32f7bdfcf17e08eaa)
@@ -151,6 +153,7 @@ Compact 编码更节省空间，适合优化交易大小。
 - 支持复杂交互，如「发送 BTC 并触发兑换」、「存入并铸造」等跨链复合逻辑。
 
 **示例：**
+
 - [Commit 交易](https://mempool.space/signet/tx/ec1d9078affd6ce20b0b57a2cdd853b9224a2a9fae9ddf759082d7a944dddab4)
 - [Reveal 交易](https://mempool.space/signet/tx/0a05ed49545204d03db88daf5bfa93cc5e9177075701a4f27a3cb97d898a45)
 - [跨链交易](https://zetachain-athens.blockpi.network/lcd/v1/public/zeta-chain/crosschain/inboundHashToCctxData/0a05ed49545204d03db88daf5bfa93cc5e9177075701a4f27a3cb97d898a45)
@@ -186,6 +189,7 @@ Compact 编码更节省空间，适合优化交易大小。
 ```
 
 **示例：**
+
 - [交易](https://blockstream.info/testnet/tx/952d60fd9efc1aad4b87a8a7a6d57a972d49e084de8b5dc524e163216c11c04f)
 - [跨链交易](https://zetachain-athens.blockpi.network/lcd/v1/public/zeta-chain/crosschain/inboundHashToCctxData/952d60fd9efc1aad4b87a8a7a6d57a972d49e084de8b5dc524e163216c11c04f)
 
@@ -221,5 +225,6 @@ depositFee = (txFee / txVsize) * 68 vB * 2
 ```
 
 其中：
+
 - `txFee = totalInputValue - totalOutputValue`
 - `txVsize` 表示 Bitcoin 交易的虚拟大小。
